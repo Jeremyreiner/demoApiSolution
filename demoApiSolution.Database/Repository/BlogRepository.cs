@@ -14,7 +14,7 @@ namespace demoApiSolution.Database.Repository
     public class BlogRepository : IBlogRepository
     {
         readonly ApplicationDbContext _DbContext;
-
+         
         public BlogRepository(ApplicationDbContext dbContext)
         {
             _DbContext = dbContext;
