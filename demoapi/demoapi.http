@@ -1,0 +1,7 @@
+@demoapi_HostAddress = http://localhost:5094
+
+GET {{demoapi_HostAddress}}/User/CreateUser/hi
+Accept: application/json
+
+
+###
