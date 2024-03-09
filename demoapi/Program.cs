@@ -1,5 +1,6 @@
 using System.ComponentModel.Design.Serialization;
 using Asp.Versioning;
+using Carter;
 using demoapi.HostedService;
 using demoApiSolution.Database.Infrastructure.MySql;
 using demoApiSolution.Database.Repository;
@@ -54,6 +55,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("MySql"),
         new MySqlServerVersion(ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MySql")))));
 
+builder.Services.AddCarter();
 
 var app = builder.Build();
 
@@ -78,5 +80,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapCarter();
 
 app.Run();
