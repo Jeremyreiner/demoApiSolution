@@ -1,12 +1,15 @@
-﻿using demoApiSolution.Shared.Entity;
+﻿using Asp.Versioning;
+using demoApiSolution.Shared.Entity;
 using demoApiSolution.Shared.Interface;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace demoapi.Controllers
+namespace demoapi.Controllers.v1
 {
-    [Route("api/[controller]")]
+    [Route("v1/[controller]")]
+    [ApiVersion("1.0")]
+    [ApiExplorerSettings(GroupName = "V1")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -16,6 +19,7 @@ namespace demoapi.Controllers
             _dalService = dalService;
         }
 
+        [MapToApiVersion("1.0")]
         [HttpGet("CreateUser/{name}")]
         public async Task<User> Create(string name)
         {
@@ -23,6 +27,7 @@ namespace demoapi.Controllers
             return user;
         }
 
+        [MapToApiVersion("1.0")]
         [HttpGet("GetUser/{name}")]
         public async Task<User?> GetUserBy(string name)
         {
